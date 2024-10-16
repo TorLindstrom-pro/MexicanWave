@@ -48,4 +48,12 @@ public class Tests
 		var expectedResult = new[] { "Ab c d", "aB c d", "ab C d", "ab c D" };
 		Assert.That(result, Is.EquivalentTo(expectedResult));
 	}
+	
+	[Test]
+	public void RepeatLetters_AreUpperCasedInTurn()
+	{
+		var result = Kata.wave("hello");
+		var expectedResult = new[] { "Hello", "hEllo", "heLlo", "helLo", "hellO" };
+		Assert.That(result, Is.EquivalentTo(expectedResult));
+	}
 }

@@ -1,20 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
+using static System.Linq.Enumerable;
 
 namespace MexicanWave;
 
 public class Kata
 {
-	public static List<string> wave(string s)
+	public static List<string> wave(string word)
 	{
-		var result = new List<string>();
-		for (var i = 0; i < s.Length; i++)
-		{
-			if (s[i] == ' ') continue;
-			
-			var standingLetter = char.ToUpper(s[i]);
-			var wave = s[..i] + standingLetter + s[(i + 1)..];
-			result.Add(wave);
-		}
-		return result;
+		return Range(0, word.Length)
+			.Where(i => word[i] != ' ')
+			.Select(i => word[..i] + char.ToUpper(word[i]) + word[(i + 1)..])
+			.ToList();
 	}
 }
